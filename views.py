@@ -26,3 +26,7 @@ def post() -> Union[Response, Tuple[Response, int]]:
             data=result
         )
     return jsonify(result)
+
+@bp_pars.route('/', methods=['GET'])
+def get():
+    return 'eeeeeeeeeeeeeeeeeeeeeeeee'

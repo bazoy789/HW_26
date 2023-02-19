@@ -1,5 +1,4 @@
 from flask import Flask
-
 from views import bp_pars
 
 
@@ -8,7 +7,7 @@ def create_app() -> Flask:
     app.register_blueprint(bp_pars)
     return app
 
-app = create_app()
+app: Flask = create_app()
 
 if __name__ == '__main__':
     app.run(debug=True)
