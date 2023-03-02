@@ -5,6 +5,7 @@ from marshmallow import ValidationError
 
 from convector import configur
 from models import BatchRequestSchema
+from db import db
 
 bp_pars = Blueprint('main', __name__, url_prefix='/perform_query')
 
@@ -27,6 +28,17 @@ def post() -> Union[Response, Tuple[Response, int]]:
         )
     return jsonify(result)
 
+
 @bp_pars.route('/', methods=['GET'])
 def get():
     return 'eeeeeeeeeeeeeeeeeeeeeeeee'
+
+
+@bp_pars.route("/test_db", methods=['GET'])
+def test_db():
+    result = db.session.execute(
+        """
+        SELECT 1;
+        """
+    ).scalar()
+    return jsonify({"result": result})
